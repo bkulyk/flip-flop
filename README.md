@@ -1,6 +1,8 @@
 FlipFlop
 ========
 
+[![Build Status](https://travis-ci.org/bkulyk/flip-flop.svg?branch=master)](https://travis-ci.org/bkulyk/flip-flop)
+
 Provide an easy mechanism for turning features on or off, either with dates or just
 a boolean value.
 
