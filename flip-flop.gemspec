@@ -1,11 +1,9 @@
 # -*- encoding: utf-8 -*-
 require File.expand_path('../lib/flip-flop/version', __FILE__)
 
-plugin_files = []
-plugin_test_files = []
-
-ignored_files = plugin_files
-ignored_files << ".gitignore"
+ignored_files = []
+ignored_files << '.gitignore'
+ignored_files << '.travis.yml'
 ignored_files.uniq!
 
 Gem::Specification.new do |gem|
