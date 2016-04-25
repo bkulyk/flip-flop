@@ -1,4 +1,4 @@
-require 'date'
+require 'yaml'
 
 module FlipFlop
   module Adapters

@@ -11,6 +11,5 @@ Bundler.setup(:default)
 require 'flip-flop'
 
 RSpec.configure do |config|
-  FlipFlop.configure do
-  end
+  FlipFlop.configure {}
 end
