@@ -1,0 +1,7 @@
+---
+:on:
+  :type: :boolean
+  :value: true
+:off:
+  :type: :boolean
+  :value: false
