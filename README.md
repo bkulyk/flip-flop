@@ -102,6 +102,9 @@ Gates
 * `after_date` &mdash; enable a feature after the date has passed
 * `until_date` &mdash; enable a feature until the date has passed
 * `date_range` &mdash; enable a feature for the duration of the date range
+* `after_time` &mdash; enable a feature after a time has passed
+* `until_time` &mdash; enable a feature until a time has passed
+* `time_range` &mdash; enable a feature for the duration of a time range
 * `percentage_of_time` &mdash; enable a feature for a given percentage of checks
 
 Adapters
