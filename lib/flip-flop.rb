@@ -23,6 +23,17 @@ module FlipFlop
   def self.configure(&block)
     get_instance.configure(&block)
   end
+
+  # Check if a feature is enabled or not
+  #
+  # Example:
+  #   >> puts "hello" if FlipFlop::feature_enabled? :say_hello
+  #
+  # Arguments:
+  #   feature_name (String/Symbol)
+  def self.feature_enabled?(feature_name)
+    get_instance.feature_enabled? feature_name.to_sym
+  end
   
   class FlipFlop
     attr_reader :config
@@ -47,12 +58,12 @@ module FlipFlop
     #   >> FlipFlop::get_instance.feature_enabled? :some_feature
     #
     # Arguments:
-    #   configuration block: (:symbol)
+    #    feature_name (Symbol)
     #
     # Returns:
     #   boolean
-    def feature_enabled?(name)
-      public_send feature_type(name), feature_value(name)
+    def feature_enabled?(feature_name)
+      public_send feature_type(feature_name), feature_value(feature_name)
     rescue
       false
     end

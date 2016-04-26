@@ -7,12 +7,12 @@ module FlipFlop
     #   >> FlipFlop::get_instance.feature_enabled? :some_feature
     #
     # Arguments:
-    #   configuration block: (:symbol)
+    #   feature_name (String/Symbol)
     #
     # Returns:
     #   boolean
     def feature_enabled?(feature_name)
-      ::FlipFlop::get_instance.feature_enabled? feature_name.to_sym
+      ::FlipFlop::feature_enabled? feature_name
     end
   end
 end

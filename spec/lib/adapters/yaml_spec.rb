@@ -12,8 +12,8 @@ describe FlipFlop do
     end
 
     it 'should load from yaml file' do
-      expect(FlipFlop.get_instance.feature_enabled? :on).to be_truthy
-      expect(FlipFlop.get_instance.feature_enabled? :off).to be_falsey
+      expect(FlipFlop::feature_enabled? :on).to be_truthy
+      expect(FlipFlop::feature_enabled? :off).to be_falsey
     end
 
   end
