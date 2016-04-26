@@ -1,4 +1,4 @@
-$:.unshift(File.expand_path('../lib', __FILE__))
+$LOAD_PATH.unshift(File.expand_path('../lib', __FILE__))
 
 require 'pathname'
 FlopFlopRoot = Pathname(__FILE__).dirname.join('..').expand_path
@@ -10,4 +10,6 @@ Bundler.setup(:default, :test)
 
 require 'flip-flop'
 
-RSpec.configure {}
+RSpec.configure do
+  FlipFlop.configure {}
+end
