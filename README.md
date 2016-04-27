@@ -122,6 +122,11 @@ about enabled and disabled features. The YAML file is parsed once when the appli
 loaded. It's quick and easy to use, but it requres a deployment if a feature needs
 to be quickly flipped.
 
+### ActiveRecord
+
+Allows feature settings to be stored in a database table. Because of typecasting and 
+additional garbage collection this will not be as fast as the YAML adapter. Futher 
+efforts will be made to makeing The ActiveRecord adapter more performant.
 
 Extending FlipFlop
 ------------------

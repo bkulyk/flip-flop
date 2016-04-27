@@ -21,7 +21,8 @@ module FlipFlop
   # Arguments:
   #   configuration block: (block)
   def self.configure(&block)
-    get_instance.configure(&block)
+    @flip_flop = FlipFlop.new
+    @flip_flop.configure(&block)
   end
 
   # Check if a feature is enabled or not
