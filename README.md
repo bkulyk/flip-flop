@@ -36,7 +36,7 @@ FlipFlop.configure do |config|
 end
 ```
 
-and add a YAML file: `config/flip-flop.yml`
+and add a YAML file: `config/flip_flop.yml`
 
 for example:
 
