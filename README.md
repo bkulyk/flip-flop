@@ -88,7 +88,7 @@ end
 Without Rails:
 
 ```ruby
-if FlipFlop::get_instance.feature_enabled? :some_feature
+if FlipFlop.feature_enabled? :some_feature
   puts 'something'
 else
   puts 'something else'
