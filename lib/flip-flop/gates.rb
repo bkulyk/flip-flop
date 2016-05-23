@@ -23,11 +23,11 @@ module FlipFlop
     end
 
     def until_time(value)
-      Time.now < value
+      Time.now.utc < value
     end
 
     def after_time(value)
-      Time.now > value
+      Time.now.utc > value
     end
 
     def percentage_of_time(value)

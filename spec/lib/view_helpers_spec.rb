@@ -7,7 +7,10 @@ class DummyController
   include FlipFlop::ViewHelpers
 end
 
-describe DummyController do  
+describe DummyController do
+  before :each do
+     FlipFlop.configure {}
+  end
 
   describe '#feature_enabled?' do
     it 'should return false if nothing has been set' do
@@ -101,12 +104,12 @@ describe DummyController do
       end
 
       it 'feature should be disabled if range not started yet' do
-        ::FlipFlop::get_instance.set_feature(:ranged, :date_range, (Time.now.utc + 60)..(Time.now.utc + ONE_DAY))
+        ::FlipFlop::get_instance.set_feature(:ranged, :time_range, (Time.now.utc + 60)..(Time.now.utc + ONE_DAY))
         expect(subject.feature_enabled? :ranged).to be_falsey
       end
 
       it 'feature should be disabled if range is past' do
-        ::FlipFlop::get_instance.set_feature(:ranged, :date_range, (Time.now.utc - ONE_DAY)..(Time.now.utc - 60))
+        ::FlipFlop::get_instance.set_feature(:ranged, :time_range, (Time.now.utc - ONE_DAY)..(Time.now.utc - 60))
         expect(subject.feature_enabled? :ranged).to be_falsey
       end
     end
