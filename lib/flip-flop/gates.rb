@@ -33,5 +33,9 @@ module FlipFlop
     def percentage_of_time(value)
       rand < (value / 100.0)
     end
+
+    def rails_env(value)
+      value == Rails.env.to_sym || value.include?(Rails.env.to_sym)
+    end
   end
 end

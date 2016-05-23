@@ -7,6 +7,14 @@ class DummyController
   include FlipFlop::ViewHelpers
 end
 
+if !defined? Rails
+  module Rails
+    def self.env
+      :test
+    end
+  end
+end
+
 describe DummyController do
   before :each do
      FlipFlop.configure {}
@@ -111,6 +119,33 @@ describe DummyController do
       it 'feature should be disabled if range is past' do
         ::FlipFlop::get_instance.set_feature(:ranged, :time_range, (Time.now.utc - ONE_DAY)..(Time.now.utc - 60))
         expect(subject.feature_enabled? :ranged).to be_falsey
+      end
+    end
+
+    context 'rails_env gate' do
+      it 'should work if value is equal to rails env' do
+        ::FlipFlop::get_instance.set_feature(:qwerty, :rails_env, :test)
+        expect(subject.feature_enabled? :qwerty).to be_truthy
+      end
+
+      it 'should fail if value is not equal to rails env' do
+        ::FlipFlop::get_instance.set_feature(:qwerty, :rails_env, :production)
+        expect(subject.feature_enabled? :qwerty).to be_falsey
+      end
+
+      it 'should pass in value is an array containing the env' do
+        ::FlipFlop::get_instance.set_feature(:qwerty, :rails_env, [:production, :test])
+        expect(subject.feature_enabled? :qwerty).to be_truthy
+      end
+
+      it 'should fail in value is an array not containing the env' do
+        ::FlipFlop::get_instance.set_feature(:qwerty, :rails_env, [:production, :dev])
+        expect(subject.feature_enabled? :qwerty).to be_falsey
+      end
+
+      it 'should fail if the env contains part of the value' do
+        ::FlipFlop::get_instance.set_feature(:qwerty, :rails_env, [:production, :testing])
+        expect(subject.feature_enabled? :test).to be_falsey
       end
     end
   end

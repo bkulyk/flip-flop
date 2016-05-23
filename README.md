@@ -57,12 +57,23 @@ for example:
     begin: 2016-01-01
     end: 2016-02-01
     excl: false
+:rails_env_example:
+  :type: :rails_env
+  :value: :production
+:another_rails_env_example:
+  :type: :rails_env
+  :env:
+    - :production
+    - :test
 ```
 
 Example Usage
 -------------
 
-In a view:
+Once FlipFlop has been configured, (see above section) you can start checking if features
+are enabled or not.
+
+### In a Rails View:
 
 ```ruby
 if feature_enabled? :my_cool_feature
@@ -73,7 +84,7 @@ end
 
 ```
 
-In a controller:
+### In a Rails Controller:
 
 ```ruby
 class SomeController < ApplicationController
@@ -85,7 +96,7 @@ class SomeController < ApplicationController
 end
 ```
 
-Without Rails:
+### Without Rails:
 
 ```ruby
 if FlipFlop.feature_enabled? :some_feature
@@ -106,6 +117,7 @@ Gates
 * `until_time` &mdash; enable a feature until a time has passed
 * `time_range` &mdash; enable a feature for the duration of a time range
 * `percentage_of_time` &mdash; enable a feature for a given percentage of checks
+* `rails_env` &mdash; enable a feature for a specified Rails environment
 
 Adapters
 --------
