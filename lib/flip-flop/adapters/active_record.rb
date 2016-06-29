@@ -6,9 +6,9 @@ module FlipFlop
 
       # override this method to prevent the feature being loaded from the
       # database twice.
-      def feature_enabled?(feature_name)
+      def feature_enabled?(feature_name, actor=nil)
         f = get_feature(feature_name)
-        public_send f.gate_type, f.value
+        public_send f.gate_type, f.value, actor
       rescue
         false
       end
@@ -54,7 +54,7 @@ module FlipFlop
         def gate_type
           super.to_sym
         end
-        
+
       end
     end
   end

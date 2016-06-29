@@ -1,6 +1,7 @@
 require 'flip-flop/gates'
 require 'flip-flop/adapters/memory'
 require 'flip-flop/railtie' if defined? Rails
+require 'flip-flop/group'
 
 module FlipFlop
 
@@ -32,8 +33,8 @@ module FlipFlop
   #
   # Arguments:
   #   feature_name (String/Symbol)
-  def self.feature_enabled?(feature_name)
-    get_instance.feature_enabled? feature_name.to_sym
+  def self.feature_enabled?(feature_name, actor=nil)
+    get_instance.feature_enabled? feature_name.to_sym, actor
   end
   
   class FlipFlop
@@ -63,8 +64,8 @@ module FlipFlop
     #
     # Returns:
     #   boolean
-    def feature_enabled?(feature_name)
-      public_send feature_type(feature_name), feature_value(feature_name)
+    def feature_enabled?(feature_name, actor=nil)
+      public_send feature_type(feature_name), feature_value(feature_name), actor
     rescue
       false
     end

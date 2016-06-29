@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    flip-flop (0.0.3)
+    flip-flop (0.0.4)
 
 GEM
   remote: https://rubygems.org/
@@ -55,4 +55,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.12.4
+   1.12.5

@@ -62,9 +62,12 @@ for example:
   :value: :production
 :another_rails_env_example:
   :type: :rails_env
-  :env:
+  :value:
     - :production
     - :test
+:group_example:
+  :type: :group
+  :value: :group_name
 ```
 
 Example Usage
@@ -118,6 +121,34 @@ Gates
 * `time_range` &mdash; enable a feature for the duration of a time range
 * `percentage_of_time` &mdash; enable a feature for a given percentage of checks
 * `rails_env` &mdash; enable a feature for a specified Rails environment
+* `group` &mdash; enable a feature for a specified group of users (needs additional configuration)
+
+Groups
+------
+
+To use the group adapter you need to register a group. For Ruby on Rails this can be done in an initializer.
+Groups are reusable, many features can be tied to a single group.
+
+```ruby
+FlipFlop::Group.register(:administrators) do |user|
+  user.is_admin?
+end
+```
+
+Setup your feature definition. Here is an example using the YAML adapter:
+
+```yaml
+---
+:awesome_admin_only_feature
+  :type: :group
+  :value: :administrators
+```
+
+When checking if the feature is enabled for that group you can provide the actor (user).
+
+```ruby
+FlipFlop.feature_enabled? :awesome_admin_only_feature, user
+```
 
 Adapters
 --------

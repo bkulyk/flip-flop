@@ -5,3 +5,6 @@
 :off:
   :type: :boolean
   :value: false
+:group_example:
+  :type: :group
+  :value: :group_name

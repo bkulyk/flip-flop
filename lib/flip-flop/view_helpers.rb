@@ -11,8 +11,8 @@ module FlipFlop
     #
     # Returns:
     #   boolean
-    def feature_enabled?(feature_name)
-      ::FlipFlop::feature_enabled? feature_name
+    def feature_enabled?(feature_name, actor=nil)
+      ::FlipFlop::feature_enabled? feature_name, actor
     end
   end
 end
