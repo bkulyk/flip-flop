@@ -150,4 +150,28 @@ describe DummyController do
     end
   end
 
+  context 'group gate' do
+    before :each do
+      ::FlipFlop::Group.register(:group_a) { |actor| actor[:user_group] == 'asdf' }
+    end
+
+    it 'should be able to execute logic specified when registering a group' do
+      ::FlipFlop::get_instance.set_feature(:awesomeness, :group, :group_a)
+      actor = { user_group: 'asdf' }
+      expect(subject.feature_enabled? :awesomeness, actor).to be_truthy
+    end
+
+    it 'should fail the feature check if the block doesnt pass' do
+      ::FlipFlop::get_instance.set_feature(:awesomeness, :group, :group_a)
+      actor = { user_group: 'qwert' }
+      expect(subject.feature_enabled? :awesomeness, actor).to be_falsey
+    end
+
+    it 'should fail if the group has not been defined' do
+      ::FlipFlop::get_instance.set_feature(:awesomeness, :group, :group_b)
+      actor = { user_group: 'not_there' }
+      expect(subject.feature_enabled? :awesomeness, actor).to be_falsey
+    end
+  end
+
 end

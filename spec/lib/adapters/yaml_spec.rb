@@ -12,8 +12,20 @@ describe FlipFlop do
     end
 
     it 'should load from yaml file' do
-      expect(FlipFlop::feature_enabled? :on).to be_truthy
-      expect(FlipFlop::feature_enabled? :off).to be_falsey
+      expect(FlipFlop.feature_enabled? :on).to be_truthy
+      expect(FlipFlop.feature_enabled? :off).to be_falsey
+    end
+
+    it 'should still work for group gate' do
+      user1 = { group: "a" }
+      user2 = { group: "b" }
+
+      FlipFlop::Group.register(:group_name) do |actor|
+        actor[:group] == 'a'
+      end
+
+      expect(FlipFlop.feature_enabled? :group_example, user1).to be_truthy
+      expect(FlipFlop.feature_enabled? :group_example, user2).to be_falsey
     end
 
   end
