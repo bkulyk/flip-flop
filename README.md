@@ -57,6 +57,12 @@ for example:
     begin: 2016-01-01
     end: 2016-02-01
     excl: false
+:time_range_example:
+  :type: :time_range
+  :value: !ruby/range
+    begin: 2016-01-01 01:21:15 UTC
+    end: 2016-01-02 01:24:15 UTC
+    excl: true # include last second in this case (false is .. notation while true is ... when exec by ruby)
 :rails_env_example:
   :type: :rails_env
   :value: :production
