@@ -28,5 +28,13 @@ describe FlipFlop do
       expect(FlipFlop.feature_enabled? :group_example, user2).to be_falsey
     end
 
+    it 'on gate should work' do
+      expect(FlipFlop.feature_enabled? :simple_on).to be_truthy
+    end
+
+    it 'off gate should work' do
+      expect(FlipFlop.feature_enabled? :simple_off).to be_falsey
+    end
+
   end
 end

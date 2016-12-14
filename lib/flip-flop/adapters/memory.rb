@@ -13,7 +13,7 @@ module FlipFlop
         @features[name] || nil
       end
 
-      def set_feature(name, type, value)
+      def set_feature(name, type, value=nil)
         @features[name] = {type: type, value: value}
       end
 

@@ -41,5 +41,14 @@ module FlipFlop
     def group(group_name, actor)
       Group.evaluate_group(group_name, actor)
     end
+
+    def on(value, actor)
+      true
+    end
+
+    def off(value, actor)
+      false
+    end
+
   end
 end

@@ -174,4 +174,28 @@ describe DummyController do
     end
   end
 
+  context 'on gate' do
+    it 'should be true if the feature exists' do
+      ::FlipFlop::get_instance.set_feature(:awesomeness, :on)
+      expect(subject.feature_enabled? :awesomeness).to be_truthy
+    end
+
+    it 'should be true if the feature exists regardless of the value it was created with' do
+      ::FlipFlop::get_instance.set_feature(:more_betterness, :on, false)
+      expect(subject.feature_enabled? :more_betterness).to be_truthy
+    end
+  end
+
+  context 'off gate' do
+    it 'should be false if the feature exists' do
+      ::FlipFlop::get_instance.set_feature(:awesomeness, :off)
+      expect(subject.feature_enabled? :awesomeness).to be_falsey
+    end
+
+    it 'should be false if the feature exists regardless of the value it was created with' do
+      ::FlipFlop::get_instance.set_feature(:more_betterness, :off, true)
+      expect(subject.feature_enabled? :more_betterness).to be_falsey
+    end
+  end
+
 end
