@@ -18,7 +18,7 @@ module FlipFlop
       end
 
       def disable_feature(name)
-        set_feature(name, :boolean, false)
+        set_feature(name, :off, nil)
       end
 
       def feature_type(name)

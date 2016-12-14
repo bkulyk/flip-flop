@@ -68,6 +68,10 @@ for example:
 :group_example:
   :type: :group
   :value: :group_name
+:great_feature:
+  :type: :on
+:ickey_feature:
+  :type: :off
 ```
 
 Example Usage
@@ -112,7 +116,9 @@ end
 Gates
 -----
 
-* `boolean` &mdash; enable or disable a feature
+* `on` &mdash; turn a feature on
+* `off` &mdash; turn a feature off
+* `boolean` &mdash; enable or disable a feature with a true/false value
 * `after_date` &mdash; enable a feature after the date has passed
 * `until_date` &mdash; enable a feature until the date has passed
 * `date_range` &mdash; enable a feature for the duration of the date range
