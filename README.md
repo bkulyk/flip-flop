@@ -196,7 +196,7 @@ end
 ### Adding Custom Adapters
 
 Custom adapters can be added by creating a new adapter class, and then setting the
-adapture when configuring the FlipFlop. See the "Configure" for an example.
+adapter when configuring the FlipFlop. See the "Configure" for an example.
 
 Contributing to FlipFlop
 ------------------------
